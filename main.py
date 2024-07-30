@@ -10,13 +10,14 @@ app = Flask(__name__)
 #создаем функцию с переменной weather, где мы будем сохранять погоду
 def index():
    weather = None
+   quotes = det_quotes()
 #формируем условия для проверки метода. Форму мы пока не создавали, но нам из неё необходимо будет взять только город.
    if request.method == 'POST':
 #этот определенный город мы будем брать для запроса API
        city = request.form['city']
    # прописываем переменную, куда будет сохраняться результат и функцию weather с указанием города, который берем из формы
        weather = get_weather(city)
-   return render_template("index.html", weather=weather)
+   return render_template("index.html", weather=weather, quotes=quotes)
 
 def get_weather(city):
    api_key = "fda902a077e24b262b0187ca6bc24204"
@@ -26,6 +27,12 @@ def get_weather(city):
    response = requests.get(url)
    #прописываем формат возврата результата
    return response.json()
+
+def det_quotes():
+    # api_key_q = "8b6eeda3fcc07dfce3a83c8da0595131"
+    url = f"https://favqs.com/api/qotd"
+    response = requests.get(url)
+    return response.json()
 
 
 if __name__ == '__main__':
