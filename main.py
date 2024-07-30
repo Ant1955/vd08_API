@@ -29,7 +29,7 @@ def get_weather(city):
    return response.json()
 
 def det_quotes():
-    # api_key_q = "8b6eeda3fcc07dfce3a83c8da0595131"
+    # api_key_q = "8b6eeda3fcc07dfce3a83c8da0595131"  for https://favqs.com/api
     url = f"https://favqs.com/api/qotd"
     response = requests.get(url)
     return response.json()
