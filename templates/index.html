@@ -10,7 +10,7 @@
 <body>
 <div class="container mt-5">
    <h1 class="text-center mb-4">Сайт с прогнозом погоды в любой точке мира</h1>
-   #создаём форму для запроса
+   <!-- создаём форму для запроса -->
    <form method="post" class="form-inline justify-content-center mb-4">
        <div class="form-group mx-sm-3 mb-2">
            <input type="text" class="form-control" name="city" placeholder="Введите город" required>
@@ -20,15 +20,14 @@
 
    <div class="result text-center">
        {% if weather %}
-           <h3>Погода в {{ weather['name'] }}</h3>
+           <h3>Погода в {{ weather['name'] }} на {{ stime }}</h3>
            <p>Температура: {{ weather['main']['temp'] }}°C</p>
            <p>Погода: {{ weather['weather'][0]['description'] }}</p>
        {% endif %}
    </div>
    <div class="result text-center">
         {% if quotes %}
-           <h3>Цитата на сегодня:</h3>
-           <p>Дата цитаты: {{ quotes['qotd_date'] }}</p>
+           <h3>Цитата на сегодня {{date}}:</h3>
            <p>Цитата: {{ quotes['quote']['body'] }}</p>
            <p>Автор: {{ quotes['quote']['author'] }}</p>
        {% endif %}
